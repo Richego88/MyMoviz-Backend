@@ -13,17 +13,16 @@ router.get("/movies", function (req, res) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      response.json();
+      return response.json();
     })
     .then((data) => {
-      res
-        .json({
-          movies: data.results,
-        })
-        .catch((error) => {
-          console.error("Error fetching TMDb API:", error); // Log any error
-          res.status(500).json({ error: "Failed to fetch data from TMDb API" });
-        });
+      res.json({
+        movies: data.results,
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching TMDb API:", error); // Log any error
+      res.status(500).json({ error: "Failed to fetch data from TMDb API" });
     });
 });
 
