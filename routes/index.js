@@ -26,4 +26,6 @@ router.get("/movies", function (req, res) {
     });
 });
 
+app.get("/", (req, res) => res.send("Backend is working!"));
+
 module.exports = router;
